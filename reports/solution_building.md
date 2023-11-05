@@ -33,7 +33,13 @@ Then I tried to few-shot the Mistral model. At a glance it worked and give the a
 In conclusion about this method, Mistral is good model for few-shoting, it demonstrates its ability to quickly adapt and perform tasks without extensive prior training, but it required difficult prompt tunung to improve metrics, and required many computational resources.
 
 ## Hypothesis 2: T5 fine-tunes well
+I take pre-trained T5 model for paraphrasing [humarin/chatgpt_paraphraser_on_T5_base](https://huggingface.co/humarin/chatgpt_paraphraser_on_T5_base), and fine tune it on the train set. The training 3 epochs took 2 hours on the RTX A5000.
+
+![](t5_ft.png)
+
+According to the metric it is the best method for this task, it gets ~0.45. This model is smaller than `t5-large`, and could be inferenced in any CPU and GPU.
+
 
 
 ## Results
-...
+In this assignment, we explored various methods to detoxify text input using Large Language Models (LLMs) and established baselines. We experimented with few-shot learning approaches using T5 and Mistral models. The T5-large model, despite its promise, did not perform well in few-shot learning scenarios, generating responses that were either too similar to the input or still contained toxic elements. Conversely, the Mistral model displayed considerable potential in few-shot settings. The most effective approach was fine-tuning a pre-trained T5 model on a paraphrasing task, suggesting that fine-tuning LLMs on specific tasks with appropriate datasets could lead to substantial improvements in performance for detoxification tasks.

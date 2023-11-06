@@ -1,0 +1,12 @@
+# TODO: fix versions
+transformers
+accelerate
+datasets
+pandas
+nltk
+sentencepiece
+scikit-learn
+wandb
+tqdm
+flair
+torch

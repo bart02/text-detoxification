@@ -39,7 +39,5 @@ I take pre-trained T5 model for paraphrasing [humarin/chatgpt_paraphraser_on_T5_
 
 According to the metric it is the best method for this task, it gets ~0.45. This model is smaller than `t5-large`, and could be inferenced in any CPU and GPU.
 
-
-
 ## Results
 In this assignment, we explored various methods to detoxify text input using Large Language Models (LLMs) and established baselines. We experimented with few-shot learning approaches using T5 and Mistral models. The T5-large model, despite its promise, did not perform well in few-shot learning scenarios, generating responses that were either too similar to the input or still contained toxic elements. Conversely, the Mistral model displayed considerable potential in few-shot settings. The most effective approach was fine-tuning a pre-trained T5 model on a paraphrasing task, suggesting that fine-tuning LLMs on specific tasks with appropriate datasets could lead to substantial improvements in performance for detoxification tasks.

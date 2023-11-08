@@ -1,12 +1,17 @@
-# TODO: fix versions
-transformers
-accelerate
-datasets
-pandas
-nltk
-sentencepiece
-scikit-learn
-wandb
+torch==2.1.0
 tqdm
+
+# HuggingFace
+transformers==4.35.0
+accelerate==0.24.1
+evaluate==0.4.1
+datasets==2.14.6
+
+# For T5 model
+sentencepiece==0.1.99
+
+pandas
+scikit-learn
+
+nltk
 flair
-torch

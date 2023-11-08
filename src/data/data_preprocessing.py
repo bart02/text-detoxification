@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-src_path = Path(__file__).parent.parent.parent
+root_path = Path(__file__).parent.parent.parent
 
 df = pd.read_csv(src_path / "data" / "raw" / "filtered.tsv", sep="\t", index_col='Unnamed: 0')
 df = df.drop(columns=['similarity', 'lenght_diff'])

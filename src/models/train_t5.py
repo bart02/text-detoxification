@@ -6,6 +6,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, \
     Seq2SeqTrainingArguments, Seq2SeqTrainer, DataCollatorForSeq2Seq
 import evaluate
 import numpy as np
+from pathlib import Path
 
 transformers.enable_full_determinism(420)
 PREFFIX = "detoxify: "
@@ -29,6 +30,7 @@ def compute_metrics(metric, tokenizer, eval_pred):
 
 
 def tokenize(tokenizer, examples):
+    """Tokenize all examples"""
     inputs = [PREFFIX + e for e in examples["reference"]]
     targets = examples["translation"]
 
@@ -38,13 +40,14 @@ def tokenize(tokenizer, examples):
     tokenized_inputs["labels"] = tokenized_targets["input_ids"]
     return tokenized_inputs
 
+root_path = Path(__file__).parent.parent.parent
 
 @click.command(context_settings={'show_default': True, 'help_option_names': ['-h', '--help'], 'max_content_width': 120})
 @click.option('--base_model_name_or_path', default="humarin/chatgpt_paraphraser_on_T5_base",
               help='Base model for training')
-@click.option('--dataset_path', default="../../data/interim/splitted_dataset", help='Path to dataset',
+@click.option('--dataset_path', default=f"{root_path}/data/interim/splitted_dataset", help='Path to dataset',
               type=click.Path(file_okay=False, dir_okay=True, exists=True))
-@click.option('--output_dir', default="../../models/t5_detox", help='Output directory', type=click.Path())
+@click.option('--output_dir', default=f"{root_path}/models/t5_detox", help='Output directory', type=click.Path())
 @click.option('--num_train_epochs', default=4, help='Total number of training epochs to perform')
 @click.option('--batch_size', default=32)
 @click.option('--save_total_limit', default=3, help='Number of checkpoints to save')

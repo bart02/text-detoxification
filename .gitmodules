@@ -1,0 +1,3 @@
+[submodule "models/t5-detox"]
+	path = models/t5-detox
+	url = https://huggingface.co/batalovme/t5-detox
